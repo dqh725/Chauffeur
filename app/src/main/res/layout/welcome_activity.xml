@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.chauffeur.appyfuture.chauffeur.Welcome">
+    tools:context="com.chauffr.registration.Welcome">
 
     <TextView
         android:layout_marginTop="30dip"
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text=""
         android:layout_margin="30dip"
         android:id="@+id/chauffeur_name"
         android:layout_centerHorizontal="true"
@@ -47,6 +47,8 @@
         android:layout_below="@+id/chauffeur_name" />
 
     <Button
+        android:background="@drawable/chauffeur_btn_active"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="OK"

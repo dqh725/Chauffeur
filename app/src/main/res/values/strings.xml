@@ -1,17 +1,22 @@
 <resources>
+    <string name="ok">OK</string>
+    <string name="back">Back</string>
+    <string name="validationErrors">Validation Errors</string>
+    <!-- Strings related to entry -->
     <string name="app_name">Chauffeur</string>
     <string name="login">Login</string>
     <string name="or">or</string>
     <string name="register">Register</string>
+    <!-- Strings related to Connecting -->
     <string name="connect_title">Let us connect to your chauffeur!</string>
     <string name="connect_footer">This is a code provided by your chauffeur. If you don\'t have one, please ask your chauffeur for one.</string>
-
+    <!-- Strings related to Welcome -->
     <string name="welcome_title">Welcome</string>
     <string name="welcome_sub_title">You are now connected to</string>
     <string name="welcome_footer">Lets quickly create an account for you</string>
     <string name="title_activity_signup">Create an account</string>
 
-    <!-- Strings related to login -->
+    <!-- Strings related to Signup -->
     <string name="prompt_phone">Phone</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -19,9 +24,47 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
+    <string name="error_invalid_phone">Please enter 10 digital phone number</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!-- Strings related to signup2 page -->
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+
+    <!-- Strings related to signup3 page -->
+    <string name="error_card_number">The card number that you entered is invalid</string>
+    <string name="error_date">The expiration date that you entered is invalid</string>
+    <string name="error_CVC">The CVC code that you entered is invalid</string>
+    <string name="error_card_details">The card details that you entered are invalid</string>
+    <string name="verify">Verify your card</string>
+    <string name="create">Create</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login">Log in</string>
+
+    <!-- String related to home-->
+
+    <string name="myhome">My Home</string>
+    <string name="mywork">My Work</string>
+    <string name="airport">Aiport</string>
+    <string name="otherAddress">Other Address</string>
+
+    <!--drawerlayout -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="title_activity_dropoff">Dropoff</string>
+
+
+    <!-- home_address -->
+    <string name="home_address_title">Enter your home Address</string>
+    <string name="home_address_tail">We have saved your address, so that you don\'t have to enter your home address everytime, You can edit the ...</string>
+    <string name="title_activity_date_time_picker">DateTimePicker</string>
+
+    <!-- additional requirement -->
+    <string name="cartype">{fa-car} Choose Car Type</string>
+    <string name="baby_seat">Choose number of baby seats</string>
 </resources>

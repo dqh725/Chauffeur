@@ -1,4 +1,4 @@
-package com.chauffeur.appyfuture.chauffeur;
+package com.chauffr;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

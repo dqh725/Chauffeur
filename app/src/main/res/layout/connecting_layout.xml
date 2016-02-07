@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Connecting">
+    tools:context="com.chauffr.registration.Connecting">
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,14 +20,20 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <EditText
+
+
+    <AutoCompleteTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Type in chauffeur code"
         android:id="@+id/code"
+        android:drawableLeft="@drawable/code32"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
 
     <Button
+        android:background="@drawable/chauffeur_btn_active"
+        android:textColor="#FFFFFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Connect Me"
@@ -43,4 +49,5 @@
         android:id="@+id/textView2"
         android:layout_below="@+id/connect_btn"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

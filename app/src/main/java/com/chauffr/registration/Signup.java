@@ -1,8 +1,9 @@
-package com.chauffeur.appyfuture.chauffeur;
+package com.chauffr.registration;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -20,6 +21,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -28,6 +30,11 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.chauffr.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,28 +62,29 @@ public class Signup extends AppCompatActivity implements LoaderCallbacks<Cursor>
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
-
     // UI references.
     private AutoCompleteTextView mEmailView;
+    private EditText mPhoneView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-
+    private String chauffeurId=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup_activity);
         setupActionBar();
         // Set up the login form.
+        chauffeurId = getIntent().getStringExtra("ChauffeurId");
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
-
+        mPhoneView = (EditText) findViewById(R.id.phone);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
+                    attemptGoToNext();
                     return true;
                 }
                 return false;
@@ -87,14 +95,19 @@ public class Signup extends AppCompatActivity implements LoaderCallbacks<Cursor>
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+                attemptGoToNext();
             }
         });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem)
+    {
+        onBackPressed();
+        return true;
+    }
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -154,22 +167,31 @@ public class Signup extends AppCompatActivity implements LoaderCallbacks<Cursor>
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
-    private void attemptLogin() {
+    private void attemptGoToNext() {
         if (mAuthTask != null) {
             return;
         }
 
         // Reset errors.
+        mPhoneView.setError(null);
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
+        String phone = mPhoneView.getText().toString();
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
+
+        // Check for a valid phone, if the user entered one.
+        if (!TextUtils.isEmpty(phone) && !isPhoneValid(phone)) {
+            mPhoneView.setError(getString(R.string.error_invalid_phone));
+            focusView = mPhoneView;
+            cancel = true;
+        }
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
@@ -195,9 +217,21 @@ public class Signup extends AppCompatActivity implements LoaderCallbacks<Cursor>
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+//            showProgress(true);
+//            mAuthTask = new UserLoginTask(email, password);
+//            mAuthTask.execute((Void) null);
+            Intent intent = new Intent(Signup.this, Signup2.class);
+            JSONObject client = new JSONObject();
+            try {
+                client.put("ChauffeurId", chauffeurId);
+                client.put("PhoneNumber", mPhoneView.getText().toString());
+                client.put("Email",mEmailView.getText().toString());
+                client.put("Password", mPasswordView.getText().toString());
+                intent.putExtra("newClient", client.toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            startActivity(intent);
         }
     }
 
@@ -209,6 +243,11 @@ public class Signup extends AppCompatActivity implements LoaderCallbacks<Cursor>
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;
+    }
+
+    private boolean isPhoneValid(String phone) {
+        //TODO: Replace this with your own logic
+        return phone.length() == 10;
     }
 
     /**
@@ -278,7 +317,6 @@ public class Signup extends AppCompatActivity implements LoaderCallbacks<Cursor>
 
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
-
     }
 
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {

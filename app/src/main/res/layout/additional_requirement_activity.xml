@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.chauffr.home.AdditionalRequirement" >
+
+    <include
+        layout="@layout/chauffur_toolbar"
+        android:id="@+id/my_toolbar" />
+    <ScrollView
+        android:layout_below="@id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:layout_width="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:textColor="@color/darkBlue"
+                android:background="@color/white"
+                android:text="@string/cartype"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:id="@+id/title1"
+                android:padding="@dimen/activity_horizontal_margin"/>
+
+            <android.support.v4.view.ViewPager
+                android:layout_below="@id/title1"
+                android:id="@+id/pager"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/darkBlue" />
+
+            <com.viewpagerindicator.CirclePageIndicator
+                android:id="@+id/car_count"
+                android:layout_below="@id/pager"
+                android:background="@color/darkBlue"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"/>
+
+            <TextView
+                android:layout_below="@id/car_count"
+                android:id="@+id/title2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/baby_seat"
+                android:paddingTop="32dp"
+                android:textColor="@color/darkBlue"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"/>
+
+            <LinearLayout
+                android:layout_below="@id/title2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/darkBlue"
+                android:orientation="horizontal"
+                android:weightSum="1.0">
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.4"
+                    android:text="Baby Seats"
+                    android:textColor="@color/white"
+                    android:gravity="center"/>
+
+                <com.joanzapata.iconify.widget.IconButton
+                    android:layout_height="match_parent"
+                    android:layout_width="0dip"
+                    android:background="@color/darkBlue"
+                    android:textColor="@color/white"
+                    android:layout_weight="0.2"
+                    android:id="@+id/minus_seat"
+                    android:text="{fa-angle-down}"/>
+                <TextView
+                    android:id="@+id/baby_seat"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dip"
+                    android:layout_weight="0.2"
+                    android:text="0"
+                    android:gravity="center"
+                    android:textColor="@color/white"/>
+                <com.joanzapata.iconify.widget.IconButton
+                    android:layout_height="match_parent"
+                    android:layout_width="0dip"
+                    android:background="@color/darkBlue"
+                    android:textColor="@color/white"
+                    android:layout_weight="0.2"
+                    android:id="@+id/add_seat"
+                    android:text="{fa-angle-up}"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

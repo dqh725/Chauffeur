@@ -1,4 +1,4 @@
-package com.chauffeur.appyfuture.chauffeur;
+package com.chauffr.appyfuture.chauffeur;
 
 import org.junit.Test;
 

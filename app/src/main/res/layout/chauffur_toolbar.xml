@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:elevation="4dp"
+    app:contentInsetEnd="0dp"
+    app:contentInsetStart="0dp"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/app_name"
+            android:textSize="22dip"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:layout_centerHorizontal="true"
+            />
+        <com.joanzapata.iconify.widget.IconButton
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:text="{fa-angle-right}"
+            android:textSize="20dip"
+            android:background="@color/darkBlue"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true" />
+
+        <com.joanzapata.iconify.widget.IconButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:text="{fa-angle-left}"
+            android:textSize="20dip"
+            android:background="@color/darkBlue"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"/>
+    </RelativeLayout>
+</android.support.v7.widget.Toolbar>
